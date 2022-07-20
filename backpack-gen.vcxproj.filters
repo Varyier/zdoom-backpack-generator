@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="core.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="io.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core.h" />
+    <ClInclude Include="common.h" />
+    <ClInclude Include="io.h" />
+    <ClInclude Include="decr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ammo-config.txt">
+      <Filter>data</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="data">
+      <UniqueIdentifier>{d612a4d2-5e42-424e-8c5f-0f664925983a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\res">
+      <UniqueIdentifier>{af18a7c7-3fd1-4112-a1dc-22fb5e279f55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\decorate.template">
+      <Filter>data\res</Filter>
+    </None>
+    <None Include="res\MAPINFO">
+      <Filter>data\res</Filter>
+    </None>
+    <None Include="res\sbarinfo.template">
+      <Filter>data\res</Filter>
+    </None>
+  </ItemGroup>
+</Project>

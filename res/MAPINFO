@@ -1,0 +1,13 @@
+
+gameinfo
+{
+    backpacktype = "HeavyBackpack"
+    weaponslot = 1, "Fist", "Chainsaw"
+    weaponslot = 2, "PistolEx"
+    weaponslot = 3, "ShotgunEx", "SuperShotgunEx"
+    weaponslot = 4, "ChaingunEx"
+    weaponslot = 5, "RocketLauncherEx"
+    weaponslot = 6, "PlasmaRifleEx"
+    weaponslot = 7, "BFG9000Ex"
+    playerclasses = "DoomPlayerEx"
+}

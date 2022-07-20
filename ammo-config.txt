@@ -1,0 +1,68 @@
+
+// backpack item to give to the player with
+// any backpack thing that may modify ammo limits
+// default - "Backpack"
+//BackpackItemName: #"Backpack"
+
+// ammo type definition;
+// max (number) - maximum amount of ammo without backpack
+Ammo: ClipEx#{ max=200 }
+    : ShellEx#{ max=50 }
+    : RocketAmmoEx#{ max=50 }
+    : CellEx#{ max=300 }
+
+// backpacks definition with maximums and give amounts set separately for each ammo type;
+// default amount ammo to give is 0, default ammo maximum is 'max' set for the ammo type;
+// ammo maximum cannot decrease from backpack to backpack and cannot be less than max set for the ammo type
+// (although, backpack definitions may go in any order);
+// all <AmmoType>Max (number) properties must be set or not simultaneously for a backpack;
+// maxf (number) can be set instead of <AmmoType>Max properties for a backpack meaning that <AmmoType>Max will be equal to
+// (maxf * <AmmoType>.max) where <AmmoType>.max is max value from the ammo type definition;
+// set 'givebpkitem=false' to not give backpack item with the backpack (works only if ammo limits for the backpack are not set)
+Backpacks: SmallAmmoBag#{ ClipExGive=10, ShellExGive=4, RocketAmmoExGive=1, CellExGive=20, ClipExMax=300, ShellExMax=80, RocketAmmoExMax=80, CellExMax=480 }
+         : BackpackEx#{ ClipExGive=20, ShellExGive=8, RocketAmmoExGive=2, CellExGive=40, ClipExMax=400, ShellExMax=100, RocketAmmoExMax=100, CellExMax=600 }
+         : HeavyBackpack#{ ClipExGive=50, ShellExGive=20, RocketAmmoExGive=5, CellExGive=100, ClipExMax=600, ShellExMax=200, RocketAmmoExMax=200, CellExMax=920 }
+
+// ammo pack definitions - ammo packs will be spawned on the map;
+// always goes separately from ammo actors (must always be Custom Inventory items);
+// at (string) - type of ammo the pack gives;
+// amount (number) - ammo amount the pack gives
+AmmoPacks: SingleClipEx#{ at="ClipEx", amount=10 }
+         : SomeShellsEx#{ at="ShellEx", amount=4 }
+         : SingleRocketEx#{ at="RocketAmmoEx", amount=1 }
+         : SmallCellBoxEx#{ at="CellEx", amount=20 }
+
+         : ClipBoxEx#{ at="ClipEx", amount=50 }
+         : ShellBoxEx#{ at="ShellEx", amount=20 }
+         : RocketBoxEx#{ at="RocketAmmoEx", amount=5 }
+         : CellPackEx#{ at="CellEx", amount=100 }
+
+// weapon definitions - real weapon actors (not to be placed on maps), these are separated from weapon things;
+// at or at1 (string) - ammo type for primary fire (at1 value always hides at value if both are presented);
+// at2 (string) - ammo type for secondary fire
+Weapons: PistolEx#{ at="ClipEx" }
+       : ShotgunEx#{ at="ShellEx" }
+       : SuperShotgunEx#{ at="ShellEx" }
+       : ChaingunEx#{ at="ClipEx" }
+       : RocketLauncherEx#{ at="RocketAmmoEx" }
+       : PlasmaRifleEx#{ at="CellEx" }
+       : BFG9000Ex#{ at="CellEx" }
+
+// weapon thing definitions - these will be spawned on maps and give actual weapons with some ammo;
+// wpname (string) - weapon actor name to give on pickup;
+// ag or ag1 (number) - give amount of at/at1 ammo on pickup of the weapon thing (ag1 value always hides ag value if both are presented);
+// ag2 (number) - give amount of at2 ammo on pickup of the weapon thing
+WeaponThings: PistolExThing#{ wpname="PistolEx", ag=20 }
+            : ShotgunExThing#{ wpname="ShotgunEx", ag=8 } ShotgunExDropped#{ wpname="ShotgunEx", ag=4 }
+            : SuperShotgunExThing#{ wpname="SuperShotgunEx", ag=8 }
+            : ChaingunExThing#{ wpname="ChaingunEx", ag=20 } ChaingunExDropped#{ wpname="ChaingunEx", ag=10 }
+            : RocketLauncherExThing#{ wpname="RocketLauncherEx", ag=2 }
+            : PlasmaRifleExThing#{ wpname="PlasmaRifleEx", ag=40 }
+            : BFG9000ExThing#{ wpname="BFG9000Ex", ag=40 }
+
+
+// actors with these names will be created by backpack-gen;
+// these values are default for presented item keys
+//UtilityActors: BackpackMarker#"BackpackMarker"
+//             : AmmoLimitsChecker#"AmmoLimitsChecker"
+//             : AmmoLimitNotReachedMarker#"AmmoLimitNotReachedMarker"
