@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
 	std::ofstream file_output;
 	file_output.exceptions(std::ios_base::badbit | std::ios_base::failbit);
 	try {
-		file_output.open(output_wad_file_path);
+		file_output.open(output_wad_file_path, std::ios::binary);
 
 	} catch(std::exception& e) {
 		std::cout << "Error opening output WAD file '" << output_wad_file_path << "': " << e.what() << std::endl;
